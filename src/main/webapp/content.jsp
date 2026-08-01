@@ -19,7 +19,7 @@ AdminRecord user = (AdminRecord) session.getAttribute("user");
 	</p>
 
 	<p>
-		logout">Logout</a>
+		<a href="/lcms/logout">Logout</a>
 	</p>
 
 </body>

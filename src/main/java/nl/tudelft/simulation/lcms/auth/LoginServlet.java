@@ -40,19 +40,15 @@ public class LoginServlet extends HttpServlet
         try
         {
             String username = request.getParameter("username");
-
             String password = request.getParameter("password");
-
             DSLContext dsl = Database.dsl();
-
+            
             AdminRecord user = dsl.selectFrom(Tables.ADMIN).where(Tables.ADMIN.INLOG_NAAM.eq(username)).fetchOne();
 
             if (user != null && PasswordUtil.verify(password, user.getPasswordHash()))
             {
                 HttpSession session = request.getSession(true);
-
                 session.setAttribute("user", user);
-
                 response.sendRedirect("content.jsp");
                 return;
             }
@@ -61,7 +57,7 @@ public class LoginServlet extends HttpServlet
         }
         catch (Exception e)
         {
-            throw new ServletException("Login failed", e);
+            throw new ServletException("Login failed with exception", e);
         }
     }
 }

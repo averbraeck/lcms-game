@@ -13,32 +13,28 @@
 if ("true".equals(request.getParameter("error")))
 {
 %>
-<p style="color:red">
-Invalid username or password
-</p>
+	<p style="color:red">
+	  Invalid username or password
+	</p>
 <%
 }
 %>
 
-login
-
-    <p>
-        Username:
-        <input type="text"
-               name="username">
-    </p>
-
-    <p>
-        Password:
-        <input type="password"
-               name="password">
-    </p>
-
-    <p>
-        <input type="submit"
-               value="Login">
-    </p>
-
+<form method="post" action="<%= request.getContextPath() %>/login">
+	 
+	<p>
+		Username:<br>
+		<input type="text" name="username" autofocus>
+	</p>
+	 
+	<p>
+		Password:<br>
+		<input type="password" name="password">
+	</p>
+	 
+	<p>
+	  <input type="submit" value="Login">
+	</p>
 </form>
 
 </body>

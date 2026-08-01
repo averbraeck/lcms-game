@@ -32,6 +32,17 @@ public final class Database
 
     public static synchronized void initialize() throws IOException
     {
+        try
+        {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("MySQL driver found");
+        }
+        catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        
         if (dataSource != null)
             return;
 

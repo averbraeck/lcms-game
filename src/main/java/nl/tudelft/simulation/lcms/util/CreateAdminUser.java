@@ -29,6 +29,8 @@ public class CreateAdminUser
             .set(ADMIN.PASSWORD_HASH, hash)
             .set(ADMIN.NAAM, "Admin")
             .set(ADMIN.ADMIN_, (byte) 1)
+            .set(ADMIN.FACILITATOR, (byte) 0)
+            .set(ADMIN.ONDERZOEKER, (byte) 0)
             .execute();
 
         System.out.println("Admin user created.");
