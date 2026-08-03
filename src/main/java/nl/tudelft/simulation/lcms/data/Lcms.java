@@ -9,7 +9,6 @@ import java.util.List;
 
 import nl.tudelft.simulation.lcms.data.tables.Activiteit;
 import nl.tudelft.simulation.lcms.data.tables.ActiviteitType;
-import nl.tudelft.simulation.lcms.data.tables.Admin;
 import nl.tudelft.simulation.lcms.data.tables.BetrokkenOrganisatie;
 import nl.tudelft.simulation.lcms.data.tables.Bijlage;
 import nl.tudelft.simulation.lcms.data.tables.Discipline;
@@ -57,11 +56,6 @@ public class Lcms extends SchemaImpl {
      * The table <code>lcms.activiteit_type</code>.
      */
     public final ActiviteitType ACTIVITEIT_TYPE = ActiviteitType.ACTIVITEIT_TYPE;
-
-    /**
-     * The table <code>lcms.admin</code>.
-     */
-    public final Admin ADMIN = Admin.ADMIN;
 
     /**
      * The table <code>lcms.betrokken_organisatie</code>.
@@ -171,7 +165,6 @@ public class Lcms extends SchemaImpl {
         return Arrays.asList(
             Activiteit.ACTIVITEIT,
             ActiviteitType.ACTIVITEIT_TYPE,
-            Admin.ADMIN,
             BetrokkenOrganisatie.BETROKKEN_ORGANISATIE,
             Bijlage.BIJLAGE,
             Discipline.DISCIPLINE,

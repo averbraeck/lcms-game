@@ -74,6 +74,48 @@ public class GebruikerRecord extends UpdatableRecordImpl<GebruikerRecord> {
         return (String) get(3);
     }
 
+    /**
+     * Setter for <code>lcms.gebruiker.admin</code>.
+     */
+    public void setAdmin(Byte value) {
+        set(4, value);
+    }
+
+    /**
+     * Getter for <code>lcms.gebruiker.admin</code>.
+     */
+    public Byte getAdmin() {
+        return (Byte) get(4);
+    }
+
+    /**
+     * Setter for <code>lcms.gebruiker.facilitator</code>.
+     */
+    public void setFacilitator(Byte value) {
+        set(5, value);
+    }
+
+    /**
+     * Getter for <code>lcms.gebruiker.facilitator</code>.
+     */
+    public Byte getFacilitator() {
+        return (Byte) get(5);
+    }
+
+    /**
+     * Setter for <code>lcms.gebruiker.onderzoeker</code>.
+     */
+    public void setOnderzoeker(Byte value) {
+        set(6, value);
+    }
+
+    /**
+     * Getter for <code>lcms.gebruiker.onderzoeker</code>.
+     */
+    public Byte getOnderzoeker() {
+        return (Byte) get(6);
+    }
+
     // -------------------------------------------------------------------------
     // Primary key information
     // -------------------------------------------------------------------------
@@ -97,13 +139,16 @@ public class GebruikerRecord extends UpdatableRecordImpl<GebruikerRecord> {
     /**
      * Create a detached, initialised GebruikerRecord
      */
-    public GebruikerRecord(Integer id, String inlogNaam, String naam, String passwordHash) {
+    public GebruikerRecord(Integer id, String inlogNaam, String naam, String passwordHash, Byte admin, Byte facilitator, Byte onderzoeker) {
         super(Gebruiker.GEBRUIKER);
 
         setId(id);
         setInlogNaam(inlogNaam);
         setNaam(naam);
         setPasswordHash(passwordHash);
+        setAdmin(admin);
+        setFacilitator(facilitator);
+        setOnderzoeker(onderzoeker);
         resetTouchedOnNotNull();
     }
 }

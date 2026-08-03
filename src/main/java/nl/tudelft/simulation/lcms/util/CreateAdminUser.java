@@ -2,10 +2,10 @@ package nl.tudelft.simulation.lcms.util;
 
 import org.jooq.DSLContext;
 import nl.tudelft.simulation.lcms.db.Database;
-import static nl.tudelft.simulation.lcms.data.Tables.ADMIN;
+import static nl.tudelft.simulation.lcms.data.Tables.GEBRUIKER;
 
 /**
- * One-time creation of admin user after the database has been (re)initialized.
+ * One-time creation of GEBRUIKER user after the database has been (re)initialized.
  * <p>
  * Copyright (c) 2026-2026 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-3 style license.
@@ -17,22 +17,22 @@ public class CreateAdminUser
     {
         Database.initialize();
 
-        String username = "admin";
-        String password = "admin";
+        String username = "GEBRUIKER";
+        String password = "GEBRUIKER";
 
         String hash = PasswordUtil.hashPassword(password);
 
         DSLContext dsl = Database.dsl();
 
-        dsl.insertInto(ADMIN)
-            .set(ADMIN.INLOG_NAAM, username)
-            .set(ADMIN.PASSWORD_HASH, hash)
-            .set(ADMIN.NAAM, "Admin")
-            .set(ADMIN.ADMIN_, (byte) 1)
-            .set(ADMIN.FACILITATOR, (byte) 0)
-            .set(ADMIN.ONDERZOEKER, (byte) 0)
+        dsl.insertInto(GEBRUIKER)
+            .set(GEBRUIKER.INLOG_NAAM, username)
+            .set(GEBRUIKER.PASSWORD_HASH, hash)
+            .set(GEBRUIKER.NAAM, "GEBRUIKER")
+            .set(GEBRUIKER.ADMIN, (byte) 1)
+            .set(GEBRUIKER.FACILITATOR, (byte) 0)
+            .set(GEBRUIKER.ONDERZOEKER, (byte) 0)
             .execute();
 
-        System.out.println("Admin user created.");
+        System.out.println("GEBRUIKER user created.");
     }
 }

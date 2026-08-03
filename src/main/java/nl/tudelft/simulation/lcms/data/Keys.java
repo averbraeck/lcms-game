@@ -6,7 +6,6 @@ package nl.tudelft.simulation.lcms.data;
 
 import nl.tudelft.simulation.lcms.data.tables.Activiteit;
 import nl.tudelft.simulation.lcms.data.tables.ActiviteitType;
-import nl.tudelft.simulation.lcms.data.tables.Admin;
 import nl.tudelft.simulation.lcms.data.tables.BetrokkenOrganisatie;
 import nl.tudelft.simulation.lcms.data.tables.Bijlage;
 import nl.tudelft.simulation.lcms.data.tables.Discipline;
@@ -27,7 +26,6 @@ import nl.tudelft.simulation.lcms.data.tables.Thema;
 import nl.tudelft.simulation.lcms.data.tables.Veld;
 import nl.tudelft.simulation.lcms.data.tables.records.ActiviteitRecord;
 import nl.tudelft.simulation.lcms.data.tables.records.ActiviteitTypeRecord;
-import nl.tudelft.simulation.lcms.data.tables.records.AdminRecord;
 import nl.tudelft.simulation.lcms.data.tables.records.BetrokkenOrganisatieRecord;
 import nl.tudelft.simulation.lcms.data.tables.records.BijlageRecord;
 import nl.tudelft.simulation.lcms.data.tables.records.DisciplineRecord;
@@ -70,8 +68,6 @@ public class Keys {
     public static final UniqueKey<ActiviteitRecord> KEY_ACTIVITEIT_PRIMARY = Internal.createUniqueKey(Activiteit.ACTIVITEIT, DSL.name("KEY_activiteit_PRIMARY"), new TableField[] { Activiteit.ACTIVITEIT.ID }, true);
     public static final UniqueKey<ActiviteitTypeRecord> KEY_ACTIVITEIT_TYPE_ID_UNIQUE = Internal.createUniqueKey(ActiviteitType.ACTIVITEIT_TYPE, DSL.name("KEY_activiteit_type_id_UNIQUE"), new TableField[] { ActiviteitType.ACTIVITEIT_TYPE.ID }, true);
     public static final UniqueKey<ActiviteitTypeRecord> KEY_ACTIVITEIT_TYPE_PRIMARY = Internal.createUniqueKey(ActiviteitType.ACTIVITEIT_TYPE, DSL.name("KEY_activiteit_type_PRIMARY"), new TableField[] { ActiviteitType.ACTIVITEIT_TYPE.ID }, true);
-    public static final UniqueKey<AdminRecord> KEY_ADMIN_ID_UNIQUE = Internal.createUniqueKey(Admin.ADMIN, DSL.name("KEY_admin_id_UNIQUE"), new TableField[] { Admin.ADMIN.ID }, true);
-    public static final UniqueKey<AdminRecord> KEY_ADMIN_PRIMARY = Internal.createUniqueKey(Admin.ADMIN, DSL.name("KEY_admin_PRIMARY"), new TableField[] { Admin.ADMIN.ID }, true);
     public static final UniqueKey<BetrokkenOrganisatieRecord> KEY_BETROKKEN_ORGANISATIE_ID_UNIQUE = Internal.createUniqueKey(BetrokkenOrganisatie.BETROKKEN_ORGANISATIE, DSL.name("KEY_betrokken_organisatie_id_UNIQUE"), new TableField[] { BetrokkenOrganisatie.BETROKKEN_ORGANISATIE.ID }, true);
     public static final UniqueKey<BetrokkenOrganisatieRecord> KEY_BETROKKEN_ORGANISATIE_PRIMARY = Internal.createUniqueKey(BetrokkenOrganisatie.BETROKKEN_ORGANISATIE, DSL.name("KEY_betrokken_organisatie_PRIMARY"), new TableField[] { BetrokkenOrganisatie.BETROKKEN_ORGANISATIE.ID }, true);
     public static final UniqueKey<BijlageRecord> KEY_BIJLAGE_ID_UNIQUE = Internal.createUniqueKey(Bijlage.BIJLAGE, DSL.name("KEY_bijlage_id_UNIQUE"), new TableField[] { Bijlage.BIJLAGE.ID }, true);

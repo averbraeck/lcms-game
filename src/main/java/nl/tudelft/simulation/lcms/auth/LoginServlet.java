@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import nl.tudelft.simulation.lcms.data.Tables;
-import nl.tudelft.simulation.lcms.data.tables.records.AdminRecord;
+import nl.tudelft.simulation.lcms.data.tables.records.GebruikerRecord;
 import nl.tudelft.simulation.lcms.db.Database;
 import nl.tudelft.simulation.lcms.util.PasswordUtil;
 
@@ -42,8 +42,8 @@ public class LoginServlet extends HttpServlet
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             DSLContext dsl = Database.dsl();
-            
-            AdminRecord user = dsl.selectFrom(Tables.ADMIN).where(Tables.ADMIN.INLOG_NAAM.eq(username)).fetchOne();
+
+            GebruikerRecord user = dsl.selectFrom(Tables.GEBRUIKER).where(Tables.GEBRUIKER.INLOG_NAAM.eq(username)).fetchOne();
 
             if (user != null && PasswordUtil.verify(password, user.getPasswordHash()))
             {

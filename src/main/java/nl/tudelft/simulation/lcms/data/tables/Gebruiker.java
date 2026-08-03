@@ -80,6 +80,21 @@ public class Gebruiker extends TableImpl<GebruikerRecord> {
      */
     public final TableField<GebruikerRecord, String> PASSWORD_HASH = createField(DSL.name("password_hash"), SQLDataType.VARCHAR(255).nullable(false), this, "");
 
+    /**
+     * The column <code>lcms.gebruiker.admin</code>.
+     */
+    public final TableField<GebruikerRecord, Byte> ADMIN = createField(DSL.name("admin"), SQLDataType.TINYINT.nullable(false).defaultValue(DSL.field(DSL.raw("0"), SQLDataType.TINYINT)), this, "");
+
+    /**
+     * The column <code>lcms.gebruiker.facilitator</code>.
+     */
+    public final TableField<GebruikerRecord, Byte> FACILITATOR = createField(DSL.name("facilitator"), SQLDataType.TINYINT.nullable(false).defaultValue(DSL.field(DSL.raw("0"), SQLDataType.TINYINT)), this, "");
+
+    /**
+     * The column <code>lcms.gebruiker.onderzoeker</code>.
+     */
+    public final TableField<GebruikerRecord, Byte> ONDERZOEKER = createField(DSL.name("onderzoeker"), SQLDataType.TINYINT.nullable(false).defaultValue(DSL.field(DSL.raw("0"), SQLDataType.TINYINT)), this, "");
+
     private Gebruiker(Name alias, Table<GebruikerRecord> aliased) {
         this(alias, aliased, (Field<?>[]) null, null);
     }

@@ -6,7 +6,6 @@ package nl.tudelft.simulation.lcms.data;
 
 import nl.tudelft.simulation.lcms.data.tables.Activiteit;
 import nl.tudelft.simulation.lcms.data.tables.ActiviteitType;
-import nl.tudelft.simulation.lcms.data.tables.Admin;
 import nl.tudelft.simulation.lcms.data.tables.BetrokkenOrganisatie;
 import nl.tudelft.simulation.lcms.data.tables.Bijlage;
 import nl.tudelft.simulation.lcms.data.tables.Discipline;
@@ -42,11 +41,6 @@ public class Tables {
      * The table <code>lcms.activiteit_type</code>.
      */
     public static final ActiviteitType ACTIVITEIT_TYPE = ActiviteitType.ACTIVITEIT_TYPE;
-
-    /**
-     * The table <code>lcms.admin</code>.
-     */
-    public static final Admin ADMIN = Admin.ADMIN;
 
     /**
      * The table <code>lcms.betrokken_organisatie</code>.
