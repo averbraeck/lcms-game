@@ -1,7 +1,7 @@
-<%@ page import="nl.tudelft.simulation.lcms.data.tables.records.AdminRecord"%>
+<%@ page import="nl.tudelft.simulation.lcms.data.tables.records.GebruikerRecord"%>
 
 <%
-AdminRecord user = (AdminRecord) session.getAttribute("user");
+GebruikerRecord user = (GebruikerRecord) session.getAttribute("user");
 %>
 
 <html>

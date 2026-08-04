@@ -9,6 +9,8 @@
 
 <h2>Login</h2>
 
+<img src="images/lcms-logo-naam.png">
+
 <%
 if ("true".equals(request.getParameter("error")))
 {
