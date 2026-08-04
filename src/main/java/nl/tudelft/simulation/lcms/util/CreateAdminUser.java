@@ -17,8 +17,8 @@ public class CreateAdminUser
     {
         Database.initialize();
 
-        String username = "GEBRUIKER";
-        String password = "GEBRUIKER";
+        String username = "admin";
+        String password = "admin";
 
         String hash = PasswordUtil.hashPassword(password);
 
@@ -27,12 +27,12 @@ public class CreateAdminUser
         dsl.insertInto(GEBRUIKER)
             .set(GEBRUIKER.INLOG_NAAM, username)
             .set(GEBRUIKER.PASSWORD_HASH, hash)
-            .set(GEBRUIKER.NAAM, "GEBRUIKER")
+            .set(GEBRUIKER.NAAM, "Administrator")
             .set(GEBRUIKER.ADMIN, (byte) 1)
             .set(GEBRUIKER.FACILITATOR, (byte) 0)
             .set(GEBRUIKER.ONDERZOEKER, (byte) 0)
             .execute();
 
-        System.out.println("GEBRUIKER user created.");
+        System.out.println("admin user created.");
     }
 }
