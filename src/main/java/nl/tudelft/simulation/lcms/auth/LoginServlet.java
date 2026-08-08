@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet
             {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", user);
-                response.sendRedirect("content.jsp");
+                response.sendRedirect("/lcms/overzicht");
                 return;
             }
 
