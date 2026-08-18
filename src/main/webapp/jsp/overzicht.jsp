@@ -25,13 +25,13 @@
         <div class="top">
     
           <form action="${pageContext.request.contextPath}/overzicht" method="POST">
-            <button type="submit" class="menu-btn" name="page" value="refresh">
+            <button type="submit" class="menu-btn" name="command" value="refresh">
               <div class="icon">
                 <img src="${pageContext.request.contextPath}/images/lcms-logo-green.png" style="max-width: 40px; height:auto; display:block; margin:auto;"> 
               </div>
               <div class="nav">
-                <span class="green">VEILIGHEIDSREGIO</span><br>
-                <span class="green">GAME-OMGEVING</span>
+                <span class="green">PDPC / TU DELFT</span><br>
+                <span class="green">LCMS GAME</span>
               </div>
             </button>
           </form>
@@ -41,7 +41,7 @@
               &nbsp; 
             </div>
             <div class="nav">
-              09:41 - 07-08-2027
+              <div id="currentTime">Loading...</div>
             </div>
           </div>
         
@@ -52,7 +52,7 @@
           <hr style="width: 100%; border: none; border-top: 1px solid #ccc; margin: 8px 0;">
           
           <form action="${pageContext.request.contextPath}/overig" method="POST">
-            <button type="submit" class="menu-btn" name="page" value="overig">
+            <button type="submit" class="menu-btn" name="command" value="overig">
               <div class="icon">
                 <span class="material-icons" style="font-size: 30px; display:block; margin-top:-15px;">more_horiz</span>
               </div>
@@ -63,7 +63,7 @@
           </form>
           
           <form action="${pageContext.request.contextPath}/plot" method="POST">
-            <button type="submit" class="menu-btn" name="page" value="plot">
+            <button type="submit" class="menu-btn" name="command" value="plot">
               <div class="icon">
                 &nbsp; 
               </div>
@@ -74,7 +74,7 @@
           </form>
           
           <form action="${pageContext.request.contextPath}/documenten" method="POST">
-            <button type="submit" class="menu-btn" name="page" value="documenten">
+            <button type="submit" class="menu-btn" name="command" value="documenten">
               <div class="icon">
                 &nbsp; 
               </div>
@@ -85,7 +85,7 @@
           </form>
           
           <form action="${pageContext.request.contextPath}/onderhoud" method="POST">
-            <button type="submit" class="menu-btn" name="page" value="onderhoud">
+            <button type="submit" class="menu-btn" name="command" value="onderhoud">
               <div class="icon">
                 &nbsp;
               </div>
@@ -106,7 +106,7 @@
           <div class="left" style="margin-left: -5px;">
             <img src="${pageContext.request.contextPath}/images/tria-left.png" style="max-width:10px; height:auto; display:block; margin-right: 2px;">
             <form action="${pageContext.request.contextPath}/overzicht" method="POST">
-              <button type="submit" class="btn" name="page" value="collapse">
+              <button type="submit" class="btn" name="command" value="collapse">
                 <span class="material-icons" style="font-size: 30px;">menu</span>
               </button>
             </form>
@@ -114,35 +114,35 @@
           
           <div class="right" style="color:#9c9c9e;">
             <form action="${pageContext.request.contextPath}/profiel" method="POST">
-              <button type="submit" class="btn" name="page" value="wijzig">
+              <button type="submit" class="btn" name="command" value="profiel">
                 <span class="material-icons-outlined" style="font-size:16px;">person</span>
                 <span>&nbsp;Wissel profiel</span>
               </button>
             </form>
               
             <form action="${pageContext.request.contextPath}/applicatie" method="POST">
-              <button type="submit" class="btn" name="page" value="wissel">
+              <button type="submit" class="btn" name="command" value="applicatie">
                 <img src="${pageContext.request.contextPath}/images/lcms-logo-grey.png" style="max-width:14px; height:auto; display:block; margin:auto;">
                 <span>&nbsp;Wissel applicatie</span>
               </button>
             </form>
               
             <form action="${pageContext.request.contextPath}/help" method="POST">
-              <button type="submit" class="btn" name="page" value="help">
+              <button type="submit" class="btn" name="command" value="help">
                 <span class="material-icons" style="font-size:16px;">question_mark</span>
                 <span>&nbsp;Help</span>
               </button>
             </form>
 
             <form action="${pageContext.request.contextPath}/logout" method="POST">
-              <button type="submit" class="btn" name="page" value="help">
+              <button type="submit" class="btn" name="command" value="help">
                 <span class="material-icons" style="font-size:16px;">logout</span>
                 <span>&nbsp;Uitloggen</span>
               </button>
             </form>
                 
             <form action="${pageContext.request.contextPath}/overzicht" method="POST">
-              <button type="submit" class="btn" name="page" value="users">
+              <button type="submit" class="btn" name="command" value="gebruikers">
                 <span class="material-icons-outlined" style="font-size:24px; color:black">arrow_circle_left</span>
               </button>
             </form>
@@ -160,13 +160,13 @@
         <div class="bar">
           <div class="left">
             <form action="${pageContext.request.contextPath}/overzicht" method="POST">
-              <button type="submit" class="btn-white-selected" name="select" value="lopend">
+              <button type="submit" class="btn-white-selected" name="command" value="lopend">
                 Lopend
               </button>
-              <button type="submit" class="btn-white" name="select" value="voorbereid">
+              <button type="submit" class="btn-white" name="command" value="voorbereid">
                 Voorbereid
               </button>
-              <button type="submit" class="btn-white" name="select" value="alle">
+              <button type="submit" class="btn-white" name="command" value="alle">
                 Alle
               </button>
             </form>
@@ -175,7 +175,7 @@
           <div class="right">
             <form action="${pageContext.request.contextPath}/overzicht" method="POST">
               <input type="text" class="search" name="zoekterm" placeholder="Zoek activiteiten">
-              <button type="submit" class="btn" name="page" value="search">
+              <button type="submit" class="btn" name="command" value="zoek">
                 <span class="btn-search material-icons">search</span>
               </button>
             </form>
@@ -185,18 +185,18 @@
         <div class="bar">
           <form class="left" action="${pageContext.request.contextPath}/overzicht" method="POST">
             <div>
-              <input type="checkbox" name="ongelezen" value="false">
+              <input type="checkbox" name="command" value="ongelezen">
               <span>Toon ongelezen activiteiten</span>
             </div>
             <div style="margin-left: 10px;">
-              <input type="checkbox" name="buurorganisaties" value="false">
+              <input type="checkbox" name="command" value="buur">
               <span>Toon buurorganisaties</span>
             </div>
           </form> <!-- left -->
           
           <div class="right">
             <form action="${pageContext.request.contextPath}/activiteit" method="POST">
-              <button type="submit" class="btn-dark" name="page" value="nieuw">
+              <button type="submit" class="btn-dark" name="command" value="nieuw">
                 <span style="font-size: 28px;">+&nbsp;</span>
                 <span>Activiteit aanmaken</span>
               </button>
@@ -299,7 +299,10 @@
         INGELOGD ALS ${userName}
       </div>
       <div class="right">
-        JE BEVINDT JE IN DE LCMS OMGEVING&nbsp; <b>VEILIGHEIDSREGIO GAME-OMGEVING</b>
+        <div>
+          <span style="font-weight:bold; color:#555555;">JE BEVINDT JE IN DE LCMS OMGEVING</span>
+          <span style="font-weight:bold; color:black;"> PDPC / TU DELFT LCMS GAME</span>
+        </div>
       </div>
     </footer>
 
