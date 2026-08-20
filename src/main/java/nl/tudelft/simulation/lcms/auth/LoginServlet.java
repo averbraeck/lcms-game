@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet
             {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", user);
-                response.sendRedirect("/lcms/overzicht");
+                response.sendRedirect("/lcms/activity-list");
                 return;
             }
 

@@ -1,0 +1,437 @@
+/* ================ MAIN SCREEN ITEMS ================ */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  font-size: 11pt;
+  color: #131639;
+  font-weight: 600;
+}
+
+.app {
+  height: 100vh;
+  width: 100hw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  display: flex;
+}
+
+.screen {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: none;
+  justify-content: space-between;
+  background-color: #f3f3f5;
+  padding-top: 10px;
+  padding-bottom: 10px; padding-left : 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.green {
+  color: #8bbf65;
+  font-weight: 600;
+}
+
+/* ================ LEFT MENU ================ */
+.sidebar {
+  margin-top: 10px;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  min-height: calc(100vh - 60px);
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  flex-grow: 0;
+  margin-bottom: 10px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.icon {
+  width: 60px;
+}
+
+.nav {
+  min-width: 180px;
+  width: 180px;
+  min-height: 30px;
+  height: 30px;
+}
+
+.nav {
+  font-weight: 600;
+}
+
+/* ================ BAR ================ */
+.bar {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 30px;
+  height: 30px;
+}
+
+.left {
+  margin-left: 10px;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  vertical-align: middle;
+  row-gap: 10px;
+}
+
+.left input {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.right {
+  margin-right: 10px;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  vertical-align: middle;
+  gap: 20px;
+}
+
+.right button {
+  display: inline-flex;
+  vertical-align: middle;
+  font-weight: 600;
+}
+
+/* ================ TABLE ================ */
+
+.content {
+  overflow-y: auto;
+  padding: 0;
+  min-height: 0;
+  flex-grow: 1;
+}
+
+.messageTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.messageTable thead th {
+  min-height: 30px;
+  height: 30px;
+  position: sticky;
+  top: 0;
+  background: #6e7588;
+  z-index: 10;
+  border-bottom: 2px solid #999;
+  padding: 8px;
+  text-align: left;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.messageTable tbody td {
+  padding: 8px;
+}
+
+.messageTable tbody tr:nth-child(even) {
+  background: #ececec;
+}
+
+.messageTable tbody tr:nth-child(odd) {
+  background: #ffffff;
+}
+
+.messageTable tbody tr:hover {
+  background: #dbeafe;
+}
+
+.messageTable tbody tr {
+  cursor: pointer;
+}
+
+/* ================ FOOTER ================ */
+
+/* FOOTER */
+.footer {
+  min-height: 50px;
+  height: 50px;
+  font-size: 11pt;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background: repeating-linear-gradient(/* */
+    -45deg, /* */
+    #9fd276 0px, /* light green */
+    #9fd276 40px, /* */
+    #87c654 40px, /* dark green */
+    #87c654 80px /* */
+  );
+  font-size: 11pt;
+}
+
+.footer .right {
+  margin-left: auto;
+}
+
+/* ================ BUTTONS ================ */
+
+/* Reset button styling so it doesn't affect flexbox */
+.menu-btn {
+  appearance: none; /* Remove native OS styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none; /* No border */
+  background: transparent; /* No background */
+  padding: 0; /* No padding */
+  margin-top: 10px;
+  cursor: pointer; /* Still shows pointer */
+  width: 100%; /* Fill parent .menu */
+  display: flex; /* Flex matches parent */
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-family: inherit; /* Match surrounding text */
+  font-size: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+/* Hover states work naturally */
+.menu-btn:hover {
+  opacity: 0.8; /* Optional visual feedback */
+}
+
+.menu-btn:focus {
+  outline: 2px solid #6d4aff; /* Accessibility focus ring */
+  outline-offset: 2px;
+}
+
+/* Reset button styling so it doesn't affect flexbox */
+.btn {
+  appearance: none; /* Remove native OS styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none; /* No border */
+  background: transparent; /* No background */
+  padding: 0; /* No padding */
+  cursor: pointer; /* Still shows pointer */
+  font-family: inherit; /* Match surrounding text */
+  font-size: inherit;
+  color: inherit;
+}
+
+/* Hover states work naturally */
+.btn:hover {
+  opacity: 0.8; /* Optional visual feedback */
+}
+
+.btn:focus {
+  outline: 2px solid #6d4aff; /* Accessibility focus ring */
+  outline-offset: 2px;
+}
+
+.btn-white {
+  appearance: none; /* Remove native OS styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #dddddd; 
+  background: white; 
+  padding: 0; 
+  cursor: pointer; 
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: normal;
+  color: grey;
+  min-height: 30px;
+  height: 30px;
+  min-width: 150px;
+  width: 150px;
+}
+
+.btn-white-selected {
+  appearance: none; /* Remove native OS styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-left: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  border-top: 3px solid #d0d0d0;
+  border-right: 3px solid #d0d0d0;
+  background: #e6e6e6; 
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: normal;
+  color: black;
+  min-height: 30px;
+  height: 30px;
+  min-width: 150px;
+  width: 150px;
+}
+
+.btn-dark {
+  appearance: none; /* Remove native OS styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none; 
+  background: #131637; 
+  padding-left: 10px; 
+  padding-right: 10px; 
+  cursor: pointer; 
+  font-family: inherit;
+  font-weight: normal;
+  color: white;
+  min-height: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-bottom {
+  appearance: none; /* Remove native OS styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  background: white;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: #9c9c9c;
+  min-height: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right button span {
+  /* Reset any inherited vertical-align */
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+}
+
+.left button span {
+  /* Reset any inherited vertical-align */
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+}
+
+.sortable-header {
+  all: unset;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;  
+}
+
+input[type="checkbox"] {
+  outline: 2px solid #87c554;
+  outline-offset: -1px; /* Pull it inward to cover the native border */
+  accent-color: #87c554;
+  height: 16px;
+  width: 16px;
+}
+
+.search {
+  appearance: none; /* Remove native OS styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none; 
+  background: white; 
+  padding-left: 10px; 
+  padding-right: 10px; 
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: normal;
+  min-height: 30px;
+  height: 30px;
+  min-width: 500px;
+  width: 500px;
+  color:#777777;
+}
+
+.btn-search {
+  appearance: none; /* Remove native OS styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none; 
+  background: white; 
+  padding: 0; 
+  cursor: pointer; 
+  font-weight: normal;
+  color: black;
+  min-height: 30px;
+  height: 30px;
+  min-width: 30px;
+  width: 30px;
+  font-size:24px; 
+  color:#9c9c9e;
+}
+
+/* LEFTOVERS */
+.topbar {
+  grid-area: topbar;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.tableToolbar {
+  grid-area: toolbar;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding-left: 1rem;
+  border-top: 1px solid #ddd;
+  background: #f5f5f5;
+}

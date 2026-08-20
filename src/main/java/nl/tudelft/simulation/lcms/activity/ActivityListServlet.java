@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import nl.tudelft.simulation.lcms.util.Request;
 
 /**
  * ActivityServlet prepares the data for the activity table overview.
@@ -16,39 +17,82 @@ import jakarta.servlet.http.HttpServletResponse;
  * BSD-3 style license.
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
  */
-@WebServlet("/overzicht")
+@WebServlet("/activity-list")
 public class ActivityListServlet extends HttpServlet
 {
     /** */
     private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException
     {
-        String sort = req.getParameter("sort");
-        String direction = req.getParameter("direction");
-
-        if (sort == null)
+        ActivityListState state = (ActivityListState) req.getSession().getAttribute("activityListState");
+        if (state == null)
         {
-            sort = "wijzigDatum";
+            state = new ActivityListState();
+            req.getSession().setAttribute("activityListState", state);
+        }
+        String command = Request.getParameter(req, "command", "refresh");
+        String sub = "";
+        if (command.contains(":"))
+        {
+            sub = command.substring(command.indexOf(':') + 1);
+            command = command.substring(0, command.indexOf(':'));
+        }
+        String searchTerm = Request.getParameter(req, "search-term", "");
+        System.out.println(command);
+        System.out.println(" -- search term = " + searchTerm);
+        switch (command)
+        {
+            case "running" -> state.setActivityTypes("running");
+            case "prepared" -> state.setActivityTypes("prepared");
+            case "all" -> state.setActivityTypes("all");
+            case "collapse" -> state.setCollapse(!state.getCollapse());
+            case "unread" -> state.setUnread(!state.isUnread());
+            case "neighbor" -> state.setNeighbor(!state.isNeighbor());
+            case "more" -> state.setNrRec(state.getNrRec() + 20);
+            case "sort" ->
+            {
+                if (sub.equals(state.getSort()))
+                    state.setAscDirection(!state.getAscDirection());
+                else
+                {
+                    state.setSort(sub);
+                    state.setAscDirection(sub.contains("date") ? false : true);
+                }
+            }
+            case "search" ->
+            {
+                state.setSearchTerm(searchTerm);
+            }
+            case "clear-search" ->
+            {
+                searchTerm = "";
+                state.setSearchTerm(searchTerm);
+            }
+            case "menu" ->
+            {
+                switch (sub)
+                {
+                    case "logout" ->
+                    {
+                        req.getRequestDispatcher("logout").forward(req, resp);
+                        return;
+                    }
+                }
+            }
+
         }
 
-        if (direction == null)
-        {
-            direction = "desc";
-        }
-
-        List<ActivityLine> messages = ActivityService.getActivities(sort, direction);
-
+        List<ActivityLine> messages = ActivityListService.getActivities(state);
         req.setAttribute("messages", messages);
-        req.setAttribute("sort", sort);
-        req.setAttribute("direction", direction);
+        req.setAttribute("searchTerm", searchTerm);
 
-        req.getRequestDispatcher("jsp/overzicht.jsp").forward(req, resp);
+        req.getRequestDispatcher("jsp/activity-list.jsp").forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+    protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException
     {
         doGet(req, resp);
     }

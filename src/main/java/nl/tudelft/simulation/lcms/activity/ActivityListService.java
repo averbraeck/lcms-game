@@ -10,9 +10,9 @@ import java.util.List;
  * BSD-3 style license.
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
  */
-public class ActivityService
+public class ActivityListService
 {
-    public static List<ActivityLine> getActivities(String sort, String direction)
+    public static List<ActivityLine> getActivities(final ActivityListState state)
     {
         List<ActivityLine> list = new ArrayList<>();
         ActivityLine line1 = new ActivityLine(2, false, "Wateroverlast Lekkerkerk", "GRIP 1", "VR016 Hollands Midden",
