@@ -291,12 +291,12 @@
                     <td>
                         <input type="checkbox" name="selectedIds" value="${msg.id}">
                     </td>
-                    <td>${msg.naam}</td>
+                    <td>${msg.name}</td>
                     <td>&nbsp;</td>
-                    <td>${msg.opschalingCode}</td>
-                    <td>${msg.organisatieNaam}</td>
-                    <td>${msg.aanmaakDatum}</td>
-                    <td>${msg.wijzigDatum}</td>
+                    <td>${msg.severityCode}</td>
+                    <td>${msg.organisationName}</td>
+                    <td>${msg.dateCreated}</td>
+                    <td>${msg.dateChanged}</td>
                     <td>&nbsp;</td>
                   </tr>
                 </c:forEach>
@@ -329,7 +329,7 @@
       
       <footer class="footer">
         <div class="left">
-          INGELOGD ALS ${sessionScope.user.naam}
+          INGELOGD ALS ${sessionScope.user.name}
         </div>
         <div class="right">
           <div>

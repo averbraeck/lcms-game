@@ -7,7 +7,7 @@ package nl.tudelft.simulation.lcms.activity;
  * BSD-3 style license.
  * @author <a href="https://github.com/averbraeck">Alexander Verbraeck</a>
  */
-public record ActivityLine(int id, boolean tick, String naam, String opschalingCode, String organisatieNaam,
-        String aanmaakDatum, String wijzigDatum, boolean nieuw)
+public record ActivityLine(int id, boolean tick, String name, String severityCode, String organisationName,
+        String dateCreated, String dateChanged, boolean newEntry)
 {
 }
