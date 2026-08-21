@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ page import="nl.tudelft.simulation.lcms.data.tables.records.GebruikerRecord"%>
+<%@ page import="nl.tudelft.simulation.lcms.data.tables.records.UserRecord"%>
 <%@page import="nl.tudelft.simulation.lcms.activity.ActivityListState"%>
 
 <!DOCTYPE html>
@@ -23,14 +23,14 @@
     
       <div class="screen">
       
-        <aside class="sidebar">
+        <aside class="sidebar ${sessionScope.activityListState.collapse ? 'nav-collapsed' : ''}">
       
           <div class="top">
                   
             <button type="submit" class="menu-btn" onclick="submitForm('refresh');">
               <div class="icon">
                 <img src="${pageContext.request.contextPath}/images/lcms-logo-green.png" 
-                    style="max-width: 40px; height:auto; display:block; margin:auto;"> 
+                    style="max-width: 40px; height:auto; display:block; margin:auto;">
               </div>
               <div class="nav">
                 <span class="green">PDPC / TU DELFT</span><br>
@@ -98,12 +98,19 @@
         
           <div class="bar">
           
-            <div class="left" style="margin-left: -5px;">
-              <img src="${pageContext.request.contextPath}/images/tria-left.png" 
-                  style="max-width:10px; height:auto; display:block; margin-right: 2px;">
+            <div class="left" style="margin-left: -15px;">
+              
+              <!-- img src="${pageContext.request.contextPath}/images/tria-left.png" 
+                  style="max-width:10px; height:auto; display:block; margin-right: 2px;" -->
+              <span class="material-icons" style="color:#00cc00; vertical-align:middle; font-size:20pt; margin-right:-8px;">
+                ${sessionScope.activityListState.collapse ? '&nbsp;&nbsp;&nbsp;' : 'arrow_left'}
+              </span> 
               <button type="submit" class="btn" onclick="submitForm('collapse');">
                 <span class="material-icons" style="font-size: 30px;">menu</span>
               </button>
+              <span class="material-icons" style="color:#00cc00; vertical-align:middle; font-size:20pt; margin-left:-8px;">
+                ${sessionScope.activityListState.collapse ? 'arrow_right' : ''}
+              </span> 
             </div>
             
             <div class="right" style="color:#9c9c9e;">

@@ -91,10 +91,18 @@ html, body {
   width: 180px;
   min-height: 30px;
   height: 30px;
+  font-weight: 600;
+  transition: min-width 0.2s ease;
 }
 
-.nav {
-  font-weight: 600;
+.nav-collapsed .nav {
+    min-width: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.nav-collapsed .nav * {
+    display: none;
 }
 
 /* ================ BAR ================ */
