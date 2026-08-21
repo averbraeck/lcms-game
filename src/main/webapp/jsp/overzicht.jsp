@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ page import="nl.tudelft.simulation.lcms.data.tables.records.GebruikerRecord"%>
+<%@ page import="nl.tudelft.simulation.lcms.data.tables.records.UserRecord"%>
 
 <!DOCTYPE html>
 <html>
@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <title>Messages</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/overzicht.css">
-    <% GebruikerRecord user = (GebruikerRecord) session.getAttribute("user"); %>
+    <% UserRecord user = (UserRecord) session.getAttribute("user"); %>
     <script src="${pageContext.request.contextPath}/js/overzicht.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">

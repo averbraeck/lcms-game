@@ -1,7 +1,7 @@
-<%@ page import="nl.tudelft.simulation.lcms.data.tables.records.GebruikerRecord"%>
+<%@ page import="nl.tudelft.simulation.lcms.data.tables.records.UserRecord"%>
 
 <%
-GebruikerRecord user = (GebruikerRecord) session.getAttribute("user");
+UserRecord user = (UserRecord) session.getAttribute("user");
 %>
 
 <html>
@@ -15,7 +15,7 @@ GebruikerRecord user = (GebruikerRecord) session.getAttribute("user");
 	<h1>Welcome</h1>
 
 	<p>
-		Logged in as <b><%=user.getInlogNaam()%></b>
+		Logged in as <b><%=user.getLoginName()%></b>
 	</p>
 
 	<p>
