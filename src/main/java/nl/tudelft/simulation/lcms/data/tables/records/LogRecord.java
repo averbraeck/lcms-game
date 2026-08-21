@@ -35,73 +35,73 @@ public class LogRecord extends UpdatableRecordImpl<LogRecord> {
     }
 
     /**
-     * Setter for <code>lcms.log.gebruiker_id</code>.
+     * Setter for <code>lcms.log.table</code>.
      */
-    public void setGebruikerId(Integer value) {
+    public void setTable_(String value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>lcms.log.gebruiker_id</code>.
+     * Getter for <code>lcms.log.table</code>.
      */
-    public Integer getGebruikerId() {
-        return (Integer) get(1);
+    public String getTable_() {
+        return (String) get(1);
     }
 
     /**
-     * Setter for <code>lcms.log.tabel</code>.
+     * Setter for <code>lcms.log.change</code>.
      */
-    public void setTabel(String value) {
+    public void setChange(String value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>lcms.log.tabel</code>.
+     * Getter for <code>lcms.log.change</code>.
      */
-    public String getTabel() {
+    public String getChange() {
         return (String) get(2);
-    }
-
-    /**
-     * Setter for <code>lcms.log.wijziging</code>.
-     */
-    public void setWijziging(String value) {
-        set(3, value);
-    }
-
-    /**
-     * Getter for <code>lcms.log.wijziging</code>.
-     */
-    public String getWijziging() {
-        return (String) get(3);
     }
 
     /**
      * Setter for <code>lcms.log.timestamp</code>.
      */
     public void setTimestamp(LocalDateTime value) {
-        set(4, value);
+        set(3, value);
     }
 
     /**
      * Getter for <code>lcms.log.timestamp</code>.
      */
     public LocalDateTime getTimestamp() {
+        return (LocalDateTime) get(3);
+    }
+
+    /**
+     * Setter for <code>lcms.log.gametime</code>.
+     */
+    public void setGametime(LocalDateTime value) {
+        set(4, value);
+    }
+
+    /**
+     * Getter for <code>lcms.log.gametime</code>.
+     */
+    public LocalDateTime getGametime() {
         return (LocalDateTime) get(4);
     }
 
     /**
-     * Setter for <code>lcms.log.speltijd</code>.
+     * Setter for <code>lcms.log.user_id</code>.
      */
-    public void setSpeltijd(LocalDateTime value) {
+    public void setUserId(Integer value) {
         set(5, value);
     }
 
     /**
-     * Getter for <code>lcms.log.speltijd</code>.
+     * Getter for <code>lcms.log.user_id</code>.
      */
-    public LocalDateTime getSpeltijd() {
-        return (LocalDateTime) get(5);
+    public Integer getUserId() {
+        return (Integer) get(5);
     }
 
     // -------------------------------------------------------------------------
@@ -127,15 +127,15 @@ public class LogRecord extends UpdatableRecordImpl<LogRecord> {
     /**
      * Create a detached, initialised LogRecord
      */
-    public LogRecord(Integer id, Integer gebruikerId, String tabel, String wijziging, LocalDateTime timestamp, LocalDateTime speltijd) {
+    public LogRecord(Integer id, String table, String change, LocalDateTime timestamp, LocalDateTime gametime, Integer userId) {
         super(Log.LOG);
 
         setId(id);
-        setGebruikerId(gebruikerId);
-        setTabel(tabel);
-        setWijziging(wijziging);
+        setTable_(table);
+        setChange(change);
         setTimestamp(timestamp);
-        setSpeltijd(speltijd);
+        setGametime(gametime);
+        setUserId(userId);
         resetTouchedOnNotNull();
     }
 }

@@ -11,8 +11,8 @@ import java.util.List;
 import nl.tudelft.simulation.lcms.data.Indexes;
 import nl.tudelft.simulation.lcms.data.Keys;
 import nl.tudelft.simulation.lcms.data.Lcms;
-import nl.tudelft.simulation.lcms.data.tables.Organisatie.OrganisatiePath;
-import nl.tudelft.simulation.lcms.data.tables.Profiel.ProfielPath;
+import nl.tudelft.simulation.lcms.data.tables.Organisation.OrganisationPath;
+import nl.tudelft.simulation.lcms.data.tables.Profile.ProfilePath;
 import nl.tudelft.simulation.lcms.data.tables.records.TeamRecord;
 
 import org.jooq.Condition;
@@ -67,19 +67,19 @@ public class Team extends TableImpl<TeamRecord> {
     public final TableField<TeamRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false).generatedByDefaultAsIdentity(), this, "");
 
     /**
-     * The column <code>lcms.team.organisatie_id</code>.
-     */
-    public final TableField<TeamRecord, Integer> ORGANISATIE_ID = createField(DSL.name("organisatie_id"), SQLDataType.INTEGER.nullable(false), this, "");
-
-    /**
      * The column <code>lcms.team.code</code>.
      */
     public final TableField<TeamRecord, String> CODE = createField(DSL.name("code"), SQLDataType.VARCHAR(16).nullable(false), this, "");
 
     /**
-     * The column <code>lcms.team.naam</code>.
+     * The column <code>lcms.team.name</code>.
      */
-    public final TableField<TeamRecord, String> NAAM = createField(DSL.name("naam"), SQLDataType.VARCHAR(45).nullable(false), this, "");
+    public final TableField<TeamRecord, String> NAME = createField(DSL.name("name"), SQLDataType.VARCHAR(45).nullable(false), this, "");
+
+    /**
+     * The column <code>lcms.team.organisation_id</code>.
+     */
+    public final TableField<TeamRecord, Integer> ORGANISATION_ID = createField(DSL.name("organisation_id"), SQLDataType.INTEGER.nullable(false), this, "");
 
     private Team(Name alias, Table<TeamRecord> aliased) {
         this(alias, aliased, (Field<?>[]) null, null);
@@ -150,7 +150,7 @@ public class Team extends TableImpl<TeamRecord> {
 
     @Override
     public List<Index> getIndexes() {
-        return Arrays.asList(Indexes.TEAM_FK_TEAM_ORGANISATIE1_IDX);
+        return Arrays.asList(Indexes.TEAM_FK_TEAM_ORGANISATION1_IDX);
     }
 
     @Override
@@ -170,31 +170,31 @@ public class Team extends TableImpl<TeamRecord> {
 
     @Override
     public List<ForeignKey<TeamRecord, ?>> getReferences() {
-        return Arrays.asList(Keys.FK_TEAM_ORGANISATIE1);
+        return Arrays.asList(Keys.FK_TEAM_ORGANISATION1);
     }
 
-    private transient OrganisatiePath _organisatie;
+    private transient OrganisationPath _organisation;
 
     /**
-     * Get the implicit join path to the <code>lcms.organisatie</code> table.
+     * Get the implicit join path to the <code>lcms.organisation</code> table.
      */
-    public OrganisatiePath organisatie() {
-        if (_organisatie == null)
-            _organisatie = new OrganisatiePath(this, Keys.FK_TEAM_ORGANISATIE1, null);
+    public OrganisationPath organisation() {
+        if (_organisation == null)
+            _organisation = new OrganisationPath(this, Keys.FK_TEAM_ORGANISATION1, null);
 
-        return _organisatie;
+        return _organisation;
     }
 
-    private transient ProfielPath _profiel;
+    private transient ProfilePath _profile;
 
     /**
-     * Get the implicit to-many join path to the <code>lcms.profiel</code> table
+     * Get the implicit to-many join path to the <code>lcms.profile</code> table
      */
-    public ProfielPath profiel() {
-        if (_profiel == null)
-            _profiel = new ProfielPath(this, null, Keys.FK_PROFIEL_TEAM1.getInverseKey());
+    public ProfilePath profile() {
+        if (_profile == null)
+            _profile = new ProfilePath(this, null, Keys.FK_PROFIEL_TEAM1.getInverseKey());
 
-        return _profiel;
+        return _profile;
     }
 
     @Override

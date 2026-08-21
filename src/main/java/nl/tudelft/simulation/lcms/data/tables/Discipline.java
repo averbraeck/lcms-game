@@ -11,8 +11,8 @@ import java.util.List;
 import nl.tudelft.simulation.lcms.data.Indexes;
 import nl.tudelft.simulation.lcms.data.Keys;
 import nl.tudelft.simulation.lcms.data.Lcms;
-import nl.tudelft.simulation.lcms.data.tables.Profiel.ProfielPath;
-import nl.tudelft.simulation.lcms.data.tables.ScenarioSessie.ScenarioSessiePath;
+import nl.tudelft.simulation.lcms.data.tables.Profile.ProfilePath;
+import nl.tudelft.simulation.lcms.data.tables.ScenarioSession.ScenarioSessionPath;
 import nl.tudelft.simulation.lcms.data.tables.records.DisciplineRecord;
 
 import org.jooq.Condition;
@@ -67,14 +67,14 @@ public class Discipline extends TableImpl<DisciplineRecord> {
     public final TableField<DisciplineRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false).generatedByDefaultAsIdentity(), this, "");
 
     /**
-     * The column <code>lcms.discipline.scenario_sessie_id</code>.
+     * The column <code>lcms.discipline.name</code>.
      */
-    public final TableField<DisciplineRecord, Integer> SCENARIO_SESSIE_ID = createField(DSL.name("scenario_sessie_id"), SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<DisciplineRecord, String> NAME = createField(DSL.name("name"), SQLDataType.VARCHAR(45).nullable(false), this, "");
 
     /**
-     * The column <code>lcms.discipline.naam</code>.
+     * The column <code>lcms.discipline.scenario_session_id</code>.
      */
-    public final TableField<DisciplineRecord, String> NAAM = createField(DSL.name("naam"), SQLDataType.VARCHAR(45).nullable(false), this, "");
+    public final TableField<DisciplineRecord, Integer> SCENARIO_SESSION_ID = createField(DSL.name("scenario_session_id"), SQLDataType.INTEGER.nullable(false), this, "");
 
     private Discipline(Name alias, Table<DisciplineRecord> aliased) {
         this(alias, aliased, (Field<?>[]) null, null);
@@ -145,7 +145,7 @@ public class Discipline extends TableImpl<DisciplineRecord> {
 
     @Override
     public List<Index> getIndexes() {
-        return Arrays.asList(Indexes.DISCIPLINE_FK_DISCIPLINE_SCENARIO_SESSIE1_IDX);
+        return Arrays.asList(Indexes.DISCIPLINE_FK_DISCIPLINE_SCENARIO_SESSION1_IDX);
     }
 
     @Override
@@ -165,32 +165,32 @@ public class Discipline extends TableImpl<DisciplineRecord> {
 
     @Override
     public List<ForeignKey<DisciplineRecord, ?>> getReferences() {
-        return Arrays.asList(Keys.FK_DISCIPLINE_SCENARIO_SESSIE1);
+        return Arrays.asList(Keys.FK_DISCIPLINE_SCENARIO_SESSION1);
     }
 
-    private transient ScenarioSessiePath _scenarioSessie;
+    private transient ScenarioSessionPath _scenarioSession;
 
     /**
-     * Get the implicit join path to the <code>lcms.scenario_sessie</code>
+     * Get the implicit join path to the <code>lcms.scenario_session</code>
      * table.
      */
-    public ScenarioSessiePath scenarioSessie() {
-        if (_scenarioSessie == null)
-            _scenarioSessie = new ScenarioSessiePath(this, Keys.FK_DISCIPLINE_SCENARIO_SESSIE1, null);
+    public ScenarioSessionPath scenarioSession() {
+        if (_scenarioSession == null)
+            _scenarioSession = new ScenarioSessionPath(this, Keys.FK_DISCIPLINE_SCENARIO_SESSION1, null);
 
-        return _scenarioSessie;
+        return _scenarioSession;
     }
 
-    private transient ProfielPath _profiel;
+    private transient ProfilePath _profile;
 
     /**
-     * Get the implicit to-many join path to the <code>lcms.profiel</code> table
+     * Get the implicit to-many join path to the <code>lcms.profile</code> table
      */
-    public ProfielPath profiel() {
-        if (_profiel == null)
-            _profiel = new ProfielPath(this, null, Keys.FK_PROFIEL_DISCIPLINE1.getInverseKey());
+    public ProfilePath profile() {
+        if (_profile == null)
+            _profile = new ProfilePath(this, null, Keys.FK_PROFIEL_DISCIPLINE1.getInverseKey());
 
-        return _profiel;
+        return _profile;
     }
 
     @Override

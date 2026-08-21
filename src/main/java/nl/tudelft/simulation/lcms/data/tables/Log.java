@@ -12,7 +12,7 @@ import java.util.List;
 import nl.tudelft.simulation.lcms.data.Indexes;
 import nl.tudelft.simulation.lcms.data.Keys;
 import nl.tudelft.simulation.lcms.data.Lcms;
-import nl.tudelft.simulation.lcms.data.tables.Gebruiker.GebruikerPath;
+import nl.tudelft.simulation.lcms.data.tables.User.UserPath;
 import nl.tudelft.simulation.lcms.data.tables.records.LogRecord;
 
 import org.jooq.Condition;
@@ -67,19 +67,14 @@ public class Log extends TableImpl<LogRecord> {
     public final TableField<LogRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false).generatedByDefaultAsIdentity(), this, "");
 
     /**
-     * The column <code>lcms.log.gebruiker_id</code>.
+     * The column <code>lcms.log.table</code>.
      */
-    public final TableField<LogRecord, Integer> GEBRUIKER_ID = createField(DSL.name("gebruiker_id"), SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<LogRecord, String> TABLE = createField(DSL.name("table"), SQLDataType.VARCHAR(45).nullable(false), this, "");
 
     /**
-     * The column <code>lcms.log.tabel</code>.
+     * The column <code>lcms.log.change</code>.
      */
-    public final TableField<LogRecord, String> TABEL = createField(DSL.name("tabel"), SQLDataType.VARCHAR(45).nullable(false), this, "");
-
-    /**
-     * The column <code>lcms.log.wijziging</code>.
-     */
-    public final TableField<LogRecord, String> WIJZIGING = createField(DSL.name("wijziging"), SQLDataType.VARCHAR(255).nullable(false), this, "");
+    public final TableField<LogRecord, String> CHANGE = createField(DSL.name("change"), SQLDataType.VARCHAR(255).nullable(false), this, "");
 
     /**
      * The column <code>lcms.log.timestamp</code>.
@@ -87,9 +82,14 @@ public class Log extends TableImpl<LogRecord> {
     public final TableField<LogRecord, LocalDateTime> TIMESTAMP = createField(DSL.name("timestamp"), SQLDataType.LOCALDATETIME(0).nullable(false), this, "");
 
     /**
-     * The column <code>lcms.log.speltijd</code>.
+     * The column <code>lcms.log.gametime</code>.
      */
-    public final TableField<LogRecord, LocalDateTime> SPELTIJD = createField(DSL.name("speltijd"), SQLDataType.LOCALDATETIME(0).nullable(false), this, "");
+    public final TableField<LogRecord, LocalDateTime> GAMETIME = createField(DSL.name("gametime"), SQLDataType.LOCALDATETIME(0).nullable(false), this, "");
+
+    /**
+     * The column <code>lcms.log.user_id</code>.
+     */
+    public final TableField<LogRecord, Integer> USER_ID = createField(DSL.name("user_id"), SQLDataType.INTEGER.nullable(false), this, "");
 
     private Log(Name alias, Table<LogRecord> aliased) {
         this(alias, aliased, (Field<?>[]) null, null);
@@ -160,7 +160,7 @@ public class Log extends TableImpl<LogRecord> {
 
     @Override
     public List<Index> getIndexes() {
-        return Arrays.asList(Indexes.LOG_FK_LOG_GEBRUIKER1_IDX);
+        return Arrays.asList(Indexes.LOG_FK_LOG_USER1_IDX);
     }
 
     @Override
@@ -180,19 +180,19 @@ public class Log extends TableImpl<LogRecord> {
 
     @Override
     public List<ForeignKey<LogRecord, ?>> getReferences() {
-        return Arrays.asList(Keys.FK_LOG_GEBRUIKER1);
+        return Arrays.asList(Keys.FK_LOG_USER1);
     }
 
-    private transient GebruikerPath _gebruiker;
+    private transient UserPath _user;
 
     /**
-     * Get the implicit join path to the <code>lcms.gebruiker</code> table.
+     * Get the implicit join path to the <code>lcms.user</code> table.
      */
-    public GebruikerPath gebruiker() {
-        if (_gebruiker == null)
-            _gebruiker = new GebruikerPath(this, Keys.FK_LOG_GEBRUIKER1, null);
+    public UserPath user() {
+        if (_user == null)
+            _user = new UserPath(this, Keys.FK_LOG_USER1, null);
 
-        return _gebruiker;
+        return _user;
     }
 
     @Override

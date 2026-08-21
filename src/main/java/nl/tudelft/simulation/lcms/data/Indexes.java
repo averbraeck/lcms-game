@@ -4,24 +4,24 @@
 package nl.tudelft.simulation.lcms.data;
 
 
-import nl.tudelft.simulation.lcms.data.tables.Activiteit;
-import nl.tudelft.simulation.lcms.data.tables.ActiviteitType;
-import nl.tudelft.simulation.lcms.data.tables.BetrokkenOrganisatie;
-import nl.tudelft.simulation.lcms.data.tables.Bijlage;
+import nl.tudelft.simulation.lcms.data.tables.Activity;
+import nl.tudelft.simulation.lcms.data.tables.ActivityType;
+import nl.tudelft.simulation.lcms.data.tables.Appendix;
 import nl.tudelft.simulation.lcms.data.tables.Discipline;
-import nl.tudelft.simulation.lcms.data.tables.Domein;
-import nl.tudelft.simulation.lcms.data.tables.GebruikerActiviteit;
-import nl.tudelft.simulation.lcms.data.tables.GebruikerProfiel;
+import nl.tudelft.simulation.lcms.data.tables.Domain;
+import nl.tudelft.simulation.lcms.data.tables.Field;
+import nl.tudelft.simulation.lcms.data.tables.InvolvedOrganisation;
 import nl.tudelft.simulation.lcms.data.tables.Log;
-import nl.tudelft.simulation.lcms.data.tables.Opschaling;
-import nl.tudelft.simulation.lcms.data.tables.Organisatie;
-import nl.tudelft.simulation.lcms.data.tables.Profiel;
-import nl.tudelft.simulation.lcms.data.tables.Punt;
-import nl.tudelft.simulation.lcms.data.tables.ScenarioSessie;
-import nl.tudelft.simulation.lcms.data.tables.Sessie;
+import nl.tudelft.simulation.lcms.data.tables.Organisation;
+import nl.tudelft.simulation.lcms.data.tables.Point;
+import nl.tudelft.simulation.lcms.data.tables.Profile;
+import nl.tudelft.simulation.lcms.data.tables.ScenarioSession;
+import nl.tudelft.simulation.lcms.data.tables.Session;
+import nl.tudelft.simulation.lcms.data.tables.Severity;
 import nl.tudelft.simulation.lcms.data.tables.Team;
-import nl.tudelft.simulation.lcms.data.tables.Thema;
-import nl.tudelft.simulation.lcms.data.tables.Veld;
+import nl.tudelft.simulation.lcms.data.tables.Theme;
+import nl.tudelft.simulation.lcms.data.tables.UserActivity;
+import nl.tudelft.simulation.lcms.data.tables.UserProfile;
 
 import org.jooq.Index;
 import org.jooq.OrderField;
@@ -39,29 +39,29 @@ public class Indexes {
     // INDEX definitions
     // -------------------------------------------------------------------------
 
-    public static final Index ACTIVITEIT_FK_ACTIVITEIT_ACTIVITEIT_TYPE1_IDX = Internal.createIndex(DSL.name("fk_activiteit_activiteit_type1_idx"), Activiteit.ACTIVITEIT, new OrderField[] { Activiteit.ACTIVITEIT.ACTIVITEIT_TYPE_ID }, false);
-    public static final Index ACTIVITEIT_FK_ACTIVITEIT_OPSCHALING1_IDX = Internal.createIndex(DSL.name("fk_activiteit_opschaling1_idx"), Activiteit.ACTIVITEIT, new OrderField[] { Activiteit.ACTIVITEIT.OPSCHALING_ID }, false);
-    public static final Index ACTIVITEIT_FK_ACTIVITEIT_ORGANISATIE1_IDX = Internal.createIndex(DSL.name("fk_activiteit_organisatie1_idx"), Activiteit.ACTIVITEIT, new OrderField[] { Activiteit.ACTIVITEIT.ORGANISATIE_ID }, false);
-    public static final Index ACTIVITEIT_TYPE_FK_ACTIVITEIT_TYPE_SCENARIO_SESSIE1_IDX = Internal.createIndex(DSL.name("fk_activiteit_type_scenario_sessie1_idx"), ActiviteitType.ACTIVITEIT_TYPE, new OrderField[] { ActiviteitType.ACTIVITEIT_TYPE.SCENARIO_SESSIE_ID }, false);
-    public static final Index BETROKKEN_ORGANISATIE_FK_BETROKKEN_ORGANISATIE_ACTIVITEIT1_IDX = Internal.createIndex(DSL.name("fk_betrokken_organisatie_activiteit1_idx"), BetrokkenOrganisatie.BETROKKEN_ORGANISATIE, new OrderField[] { BetrokkenOrganisatie.BETROKKEN_ORGANISATIE.ACTIVITEIT_ID }, false);
-    public static final Index BETROKKEN_ORGANISATIE_FK_BETROKKEN_ORGANISATIE_ORGANISATIE1_IDX = Internal.createIndex(DSL.name("fk_betrokken_organisatie_organisatie1_idx"), BetrokkenOrganisatie.BETROKKEN_ORGANISATIE, new OrderField[] { BetrokkenOrganisatie.BETROKKEN_ORGANISATIE.ORGANISATIE_ID }, false);
-    public static final Index BIJLAGE_FK_BIJLAGE_ACTIVITEIT1_IDX = Internal.createIndex(DSL.name("fk_bijlage_activiteit1_idx"), Bijlage.BIJLAGE, new OrderField[] { Bijlage.BIJLAGE.ACTIVITEIT_ID }, false);
-    public static final Index DISCIPLINE_FK_DISCIPLINE_SCENARIO_SESSIE1_IDX = Internal.createIndex(DSL.name("fk_discipline_scenario_sessie1_idx"), Discipline.DISCIPLINE, new OrderField[] { Discipline.DISCIPLINE.SCENARIO_SESSIE_ID }, false);
-    public static final Index DOMEIN_FK_DOMEIN_SCENARIO_SESSIE1_IDX = Internal.createIndex(DSL.name("fk_domein_scenario_sessie1_idx"), Domein.DOMEIN, new OrderField[] { Domein.DOMEIN.SCENARIO_SESSIE_ID }, false);
-    public static final Index GEBRUIKER_ACTIVITEIT_FK_GEBRUIKER_ACTIVITEIT_ACTIVITEIT1_IDX = Internal.createIndex(DSL.name("fk_gebruiker_activiteit_activiteit1_idx"), GebruikerActiviteit.GEBRUIKER_ACTIVITEIT, new OrderField[] { GebruikerActiviteit.GEBRUIKER_ACTIVITEIT.ACTIVITEIT_ID }, false);
-    public static final Index GEBRUIKER_ACTIVITEIT_FK_GEBRUIKER_ACTIVITEIT_GEBRUIKER1_IDX = Internal.createIndex(DSL.name("fk_gebruiker_activiteit_gebruiker1_idx"), GebruikerActiviteit.GEBRUIKER_ACTIVITEIT, new OrderField[] { GebruikerActiviteit.GEBRUIKER_ACTIVITEIT.GEBRUIKER_ID }, false);
-    public static final Index GEBRUIKER_PROFIEL_FK_GEBRUIKER_PROFIEL_GEBRUIKER1_IDX = Internal.createIndex(DSL.name("fk_gebruiker_profiel_gebruiker1_idx"), GebruikerProfiel.GEBRUIKER_PROFIEL, new OrderField[] { GebruikerProfiel.GEBRUIKER_PROFIEL.GEBRUIKER_ID }, false);
-    public static final Index GEBRUIKER_PROFIEL_FK_GEBRUIKER_PROFIEL_PROFIEL1_IDX = Internal.createIndex(DSL.name("fk_gebruiker_profiel_profiel1_idx"), GebruikerProfiel.GEBRUIKER_PROFIEL, new OrderField[] { GebruikerProfiel.GEBRUIKER_PROFIEL.PROFIEL_ID }, false);
-    public static final Index LOG_FK_LOG_GEBRUIKER1_IDX = Internal.createIndex(DSL.name("fk_log_gebruiker1_idx"), Log.LOG, new OrderField[] { Log.LOG.GEBRUIKER_ID }, false);
-    public static final Index OPSCHALING_FK_OPSCHALING_SCENARIO_SESSIE1_IDX = Internal.createIndex(DSL.name("fk_opschaling_scenario_sessie1_idx"), Opschaling.OPSCHALING, new OrderField[] { Opschaling.OPSCHALING.SCENARIO_SESSIE_ID }, false);
-    public static final Index ORGANISATIE_FK_ORGANISATIE_DOMEIN1_IDX = Internal.createIndex(DSL.name("fk_organisatie_domein1_idx"), Organisatie.ORGANISATIE, new OrderField[] { Organisatie.ORGANISATIE.DOMEIN_ID }, false);
-    public static final Index PROFIEL_FK_PROFIEL_DISCIPLINE1_IDX = Internal.createIndex(DSL.name("fk_profiel_discipline1_idx"), Profiel.PROFIEL, new OrderField[] { Profiel.PROFIEL.DISCIPLINE_ID }, false);
-    public static final Index PROFIEL_FK_PROFIEL_TEAM1_IDX = Internal.createIndex(DSL.name("fk_profiel_team1_idx"), Profiel.PROFIEL, new OrderField[] { Profiel.PROFIEL.TEAM_ID }, false);
-    public static final Index PUNT_FK_PUNT_THEMA1_IDX = Internal.createIndex(DSL.name("fk_punt_thema1_idx"), Punt.PUNT, new OrderField[] { Punt.PUNT.THEMA_ID }, false);
-    public static final Index SCENARIO_SESSIE_FK_SCENARIO_SESSIE_SCENARIO1_IDX = Internal.createIndex(DSL.name("fk_scenario_sessie_scenario1_idx"), ScenarioSessie.SCENARIO_SESSIE, new OrderField[] { ScenarioSessie.SCENARIO_SESSIE.SCENARIO_ID }, false);
-    public static final Index SCENARIO_SESSIE_FK_SCENARIO_SESSIE_SESSIE1_IDX = Internal.createIndex(DSL.name("fk_scenario_sessie_sessie1_idx"), ScenarioSessie.SCENARIO_SESSIE, new OrderField[] { ScenarioSessie.SCENARIO_SESSIE.SESSIE_ID }, false);
-    public static final Index SESSIE_FK_SESSIE_SCENARIO1_IDX = Internal.createIndex(DSL.name("fk_sessie_scenario1_idx"), Sessie.SESSIE, new OrderField[] { Sessie.SESSIE.SCENARIO_ID }, false);
-    public static final Index TEAM_FK_TEAM_ORGANISATIE1_IDX = Internal.createIndex(DSL.name("fk_team_organisatie1_idx"), Team.TEAM, new OrderField[] { Team.TEAM.ORGANISATIE_ID }, false);
-    public static final Index THEMA_FK_THEMA_VELD1_IDX = Internal.createIndex(DSL.name("fk_thema_veld1_idx"), Thema.THEMA, new OrderField[] { Thema.THEMA.VELD_ID }, false);
-    public static final Index VELD_FK_VELD_ACTIVITEIT1_IDX = Internal.createIndex(DSL.name("fk_veld_activiteit1_idx"), Veld.VELD, new OrderField[] { Veld.VELD.ACTIVITEIT_ID }, false);
+    public static final Index ACTIVITY_FK_ACTIVITY_ACTIVITY_TYPE1_IDX = Internal.createIndex(DSL.name("fk_activity_activity_type1_idx"), Activity.ACTIVITY, new OrderField[] { Activity.ACTIVITY.ACTIVITY_TYPE_ID }, false);
+    public static final Index ACTIVITY_FK_ACTIVITY_ORGANISATION1_IDX = Internal.createIndex(DSL.name("fk_activity_organisation1_idx"), Activity.ACTIVITY, new OrderField[] { Activity.ACTIVITY.ORGANISATION_ID }, false);
+    public static final Index ACTIVITY_FK_ACTIVITY_SEVERITY1_IDX = Internal.createIndex(DSL.name("fk_activity_severity1_idx"), Activity.ACTIVITY, new OrderField[] { Activity.ACTIVITY.SEVERITY_ID }, false);
+    public static final Index ACTIVITY_TYPE_FK_ACTIVITY_TYPE_SCENARIO_SESSION1_IDX = Internal.createIndex(DSL.name("fk_activity_type_scenario_session1_idx"), ActivityType.ACTIVITY_TYPE, new OrderField[] { ActivityType.ACTIVITY_TYPE.SCENARIO_SESSION_ID }, false);
+    public static final Index APPENDIX_FK_APPENDIX_ACTIVITY1_IDX = Internal.createIndex(DSL.name("fk_appendix_activity1_idx"), Appendix.APPENDIX, new OrderField[] { Appendix.APPENDIX.ACTIVITY_ID }, false);
+    public static final Index DISCIPLINE_FK_DISCIPLINE_SCENARIO_SESSION1_IDX = Internal.createIndex(DSL.name("fk_discipline_scenario_session1_idx"), Discipline.DISCIPLINE, new OrderField[] { Discipline.DISCIPLINE.SCENARIO_SESSION_ID }, false);
+    public static final Index DOMAIN_FK_DOMAIN_SCENARIO_SESSION1_IDX = Internal.createIndex(DSL.name("fk_domain_scenario_session1_idx"), Domain.DOMAIN, new OrderField[] { Domain.DOMAIN.SCENARIO_SESSION_ID }, false);
+    public static final Index FIELD_FK_FIELD_ACTIVITY1_IDX = Internal.createIndex(DSL.name("fk_field_activity1_idx"), Field.FIELD, new OrderField[] { Field.FIELD.ACTIVITY_ID }, false);
+    public static final Index INVOLVED_ORGANISATION_FK_INVOLVED_ORGANIZATION_ACTIVITY1_IDX = Internal.createIndex(DSL.name("fk_involved_organization_activity1_idx"), InvolvedOrganisation.INVOLVED_ORGANISATION, new OrderField[] { InvolvedOrganisation.INVOLVED_ORGANISATION.ACTIVITY_ID }, false);
+    public static final Index INVOLVED_ORGANISATION_FK_INVOLVED_ORGANIZATION_ORGANISATION1_IDX = Internal.createIndex(DSL.name("fk_involved_organization_organisation1_idx"), InvolvedOrganisation.INVOLVED_ORGANISATION, new OrderField[] { InvolvedOrganisation.INVOLVED_ORGANISATION.ORGANISATION_ID }, false);
+    public static final Index LOG_FK_LOG_USER1_IDX = Internal.createIndex(DSL.name("fk_log_user1_idx"), Log.LOG, new OrderField[] { Log.LOG.USER_ID }, false);
+    public static final Index ORGANISATION_FK_ORGANISATIE_DOMAIN1_IDX = Internal.createIndex(DSL.name("fk_organisatie_domain1_idx"), Organisation.ORGANISATION, new OrderField[] { Organisation.ORGANISATION.DOMAIN_ID }, false);
+    public static final Index POINT_FK_POINT_THEME1_IDX = Internal.createIndex(DSL.name("fk_point_theme1_idx"), Point.POINT, new OrderField[] { Point.POINT.THEME_ID }, false);
+    public static final Index PROFILE_FK_PROFIEL_DISCIPLINE1_IDX = Internal.createIndex(DSL.name("fk_profiel_discipline1_idx"), Profile.PROFILE, new OrderField[] { Profile.PROFILE.DISCIPLINE_ID }, false);
+    public static final Index PROFILE_FK_PROFIEL_TEAM1_IDX = Internal.createIndex(DSL.name("fk_profiel_team1_idx"), Profile.PROFILE, new OrderField[] { Profile.PROFILE.TEAM_ID }, false);
+    public static final Index SCENARIO_SESSION_FK_SCENARIO_SESSIE_SCENARIO1_IDX = Internal.createIndex(DSL.name("fk_scenario_sessie_scenario1_idx"), ScenarioSession.SCENARIO_SESSION, new OrderField[] { ScenarioSession.SCENARIO_SESSION.SCENARIO_ID }, false);
+    public static final Index SCENARIO_SESSION_FK_SCENARIO_SESSION_SESSION1_IDX = Internal.createIndex(DSL.name("fk_scenario_session_session1_idx"), ScenarioSession.SCENARIO_SESSION, new OrderField[] { ScenarioSession.SCENARIO_SESSION.SESSION_ID }, false);
+    public static final Index SESSION_FK_SESSION_SCENARIO1_IDX = Internal.createIndex(DSL.name("fk_session_scenario1_idx"), Session.SESSION, new OrderField[] { Session.SESSION.SCENARIO_ID }, false);
+    public static final Index SEVERITY_FK_SEVERITY_SCENARIO_SESSION1_IDX = Internal.createIndex(DSL.name("fk_severity_scenario_session1_idx"), Severity.SEVERITY, new OrderField[] { Severity.SEVERITY.SCENARIO_SESSION_ID }, false);
+    public static final Index TEAM_FK_TEAM_ORGANISATION1_IDX = Internal.createIndex(DSL.name("fk_team_organisation1_idx"), Team.TEAM, new OrderField[] { Team.TEAM.ORGANISATION_ID }, false);
+    public static final Index THEME_FK_THEME_FIELD1_IDX = Internal.createIndex(DSL.name("fk_theme_field1_idx"), Theme.THEME, new OrderField[] { Theme.THEME.FIELD_ID }, false);
+    public static final Index USER_ACTIVITY_FK_USER_ACTIVITY_ACTIVITY1_IDX = Internal.createIndex(DSL.name("fk_user_activity_activity1_idx"), UserActivity.USER_ACTIVITY, new OrderField[] { UserActivity.USER_ACTIVITY.ACTIVITY_ID }, false);
+    public static final Index USER_ACTIVITY_FK_USER_ACTIVITY_USER1_IDX = Internal.createIndex(DSL.name("fk_user_activity_user1_idx"), UserActivity.USER_ACTIVITY, new OrderField[] { UserActivity.USER_ACTIVITY.USER_ID }, false);
+    public static final Index USER_PROFILE_FK_USER_PROFILE_PROFILE1_IDX = Internal.createIndex(DSL.name("fk_user_profile_profile1_idx"), UserProfile.USER_PROFILE, new OrderField[] { UserProfile.USER_PROFILE.PROFILE_ID }, false);
+    public static final Index USER_PROFILE_FK_USER_PROFILE_USER1_IDX = Internal.createIndex(DSL.name("fk_user_profile_user1_idx"), UserProfile.USER_PROFILE, new OrderField[] { UserProfile.USER_PROFILE.USER_ID }, false);
 }

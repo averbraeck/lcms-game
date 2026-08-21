@@ -33,16 +33,16 @@ public class ScenarioRecord extends UpdatableRecordImpl<ScenarioRecord> {
     }
 
     /**
-     * Setter for <code>lcms.scenario.naam</code>.
+     * Setter for <code>lcms.scenario.name</code>.
      */
-    public void setNaam(String value) {
+    public void setName(String value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>lcms.scenario.naam</code>.
+     * Getter for <code>lcms.scenario.name</code>.
      */
-    public String getNaam() {
+    public String getName() {
         return (String) get(1);
     }
 
@@ -69,11 +69,11 @@ public class ScenarioRecord extends UpdatableRecordImpl<ScenarioRecord> {
     /**
      * Create a detached, initialised ScenarioRecord
      */
-    public ScenarioRecord(Integer id, String naam) {
+    public ScenarioRecord(Integer id, String name) {
         super(Scenario.SCENARIO);
 
         setId(id);
-        setNaam(naam);
+        setName(name);
         resetTouchedOnNotNull();
     }
 }

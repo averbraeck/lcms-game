@@ -10,8 +10,8 @@ import java.util.List;
 
 import nl.tudelft.simulation.lcms.data.Keys;
 import nl.tudelft.simulation.lcms.data.Lcms;
-import nl.tudelft.simulation.lcms.data.tables.ScenarioSessie.ScenarioSessiePath;
-import nl.tudelft.simulation.lcms.data.tables.Sessie.SessiePath;
+import nl.tudelft.simulation.lcms.data.tables.ScenarioSession.ScenarioSessionPath;
+import nl.tudelft.simulation.lcms.data.tables.Session.SessionPath;
 import nl.tudelft.simulation.lcms.data.tables.records.ScenarioRecord;
 
 import org.jooq.Condition;
@@ -65,9 +65,9 @@ public class Scenario extends TableImpl<ScenarioRecord> {
     public final TableField<ScenarioRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false).generatedByDefaultAsIdentity(), this, "");
 
     /**
-     * The column <code>lcms.scenario.naam</code>.
+     * The column <code>lcms.scenario.name</code>.
      */
-    public final TableField<ScenarioRecord, String> NAAM = createField(DSL.name("naam"), SQLDataType.VARCHAR(45).nullable(false), this, "");
+    public final TableField<ScenarioRecord, String> NAME = createField(DSL.name("name"), SQLDataType.VARCHAR(45).nullable(false), this, "");
 
     private Scenario(Name alias, Table<ScenarioRecord> aliased) {
         this(alias, aliased, (Field<?>[]) null, null);
@@ -151,29 +151,29 @@ public class Scenario extends TableImpl<ScenarioRecord> {
         return Arrays.asList(Keys.KEY_SCENARIO_ID_UNIQUE);
     }
 
-    private transient ScenarioSessiePath _scenarioSessie;
+    private transient ScenarioSessionPath _scenarioSession;
 
     /**
      * Get the implicit to-many join path to the
-     * <code>lcms.scenario_sessie</code> table
+     * <code>lcms.scenario_session</code> table
      */
-    public ScenarioSessiePath scenarioSessie() {
-        if (_scenarioSessie == null)
-            _scenarioSessie = new ScenarioSessiePath(this, null, Keys.FK_SCENARIO_SESSIE_SCENARIO1.getInverseKey());
+    public ScenarioSessionPath scenarioSession() {
+        if (_scenarioSession == null)
+            _scenarioSession = new ScenarioSessionPath(this, null, Keys.FK_SCENARIO_SESSIE_SCENARIO1.getInverseKey());
 
-        return _scenarioSessie;
+        return _scenarioSession;
     }
 
-    private transient SessiePath _sessie;
+    private transient SessionPath _session;
 
     /**
-     * Get the implicit to-many join path to the <code>lcms.sessie</code> table
+     * Get the implicit to-many join path to the <code>lcms.session</code> table
      */
-    public SessiePath sessie() {
-        if (_sessie == null)
-            _sessie = new SessiePath(this, null, Keys.FK_SESSIE_SCENARIO1.getInverseKey());
+    public SessionPath session() {
+        if (_session == null)
+            _session = new SessionPath(this, null, Keys.FK_SESSION_SCENARIO1.getInverseKey());
 
-        return _sessie;
+        return _session;
     }
 
     @Override

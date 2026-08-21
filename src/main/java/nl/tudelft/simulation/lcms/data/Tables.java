@@ -4,26 +4,26 @@
 package nl.tudelft.simulation.lcms.data;
 
 
-import nl.tudelft.simulation.lcms.data.tables.Activiteit;
-import nl.tudelft.simulation.lcms.data.tables.ActiviteitType;
-import nl.tudelft.simulation.lcms.data.tables.BetrokkenOrganisatie;
-import nl.tudelft.simulation.lcms.data.tables.Bijlage;
+import nl.tudelft.simulation.lcms.data.tables.Activity;
+import nl.tudelft.simulation.lcms.data.tables.ActivityType;
+import nl.tudelft.simulation.lcms.data.tables.Appendix;
 import nl.tudelft.simulation.lcms.data.tables.Discipline;
-import nl.tudelft.simulation.lcms.data.tables.Domein;
-import nl.tudelft.simulation.lcms.data.tables.Gebruiker;
-import nl.tudelft.simulation.lcms.data.tables.GebruikerActiviteit;
-import nl.tudelft.simulation.lcms.data.tables.GebruikerProfiel;
+import nl.tudelft.simulation.lcms.data.tables.Domain;
+import nl.tudelft.simulation.lcms.data.tables.Field;
+import nl.tudelft.simulation.lcms.data.tables.InvolvedOrganisation;
 import nl.tudelft.simulation.lcms.data.tables.Log;
-import nl.tudelft.simulation.lcms.data.tables.Opschaling;
-import nl.tudelft.simulation.lcms.data.tables.Organisatie;
-import nl.tudelft.simulation.lcms.data.tables.Profiel;
-import nl.tudelft.simulation.lcms.data.tables.Punt;
+import nl.tudelft.simulation.lcms.data.tables.Organisation;
+import nl.tudelft.simulation.lcms.data.tables.Point;
+import nl.tudelft.simulation.lcms.data.tables.Profile;
 import nl.tudelft.simulation.lcms.data.tables.Scenario;
-import nl.tudelft.simulation.lcms.data.tables.ScenarioSessie;
-import nl.tudelft.simulation.lcms.data.tables.Sessie;
+import nl.tudelft.simulation.lcms.data.tables.ScenarioSession;
+import nl.tudelft.simulation.lcms.data.tables.Session;
+import nl.tudelft.simulation.lcms.data.tables.Severity;
 import nl.tudelft.simulation.lcms.data.tables.Team;
-import nl.tudelft.simulation.lcms.data.tables.Thema;
-import nl.tudelft.simulation.lcms.data.tables.Veld;
+import nl.tudelft.simulation.lcms.data.tables.Theme;
+import nl.tudelft.simulation.lcms.data.tables.User;
+import nl.tudelft.simulation.lcms.data.tables.UserActivity;
+import nl.tudelft.simulation.lcms.data.tables.UserProfile;
 
 
 /**
@@ -33,24 +33,19 @@ import nl.tudelft.simulation.lcms.data.tables.Veld;
 public class Tables {
 
     /**
-     * The table <code>lcms.activiteit</code>.
+     * The table <code>lcms.activity</code>.
      */
-    public static final Activiteit ACTIVITEIT = Activiteit.ACTIVITEIT;
+    public static final Activity ACTIVITY = Activity.ACTIVITY;
 
     /**
-     * The table <code>lcms.activiteit_type</code>.
+     * The table <code>lcms.activity_type</code>.
      */
-    public static final ActiviteitType ACTIVITEIT_TYPE = ActiviteitType.ACTIVITEIT_TYPE;
+    public static final ActivityType ACTIVITY_TYPE = ActivityType.ACTIVITY_TYPE;
 
     /**
-     * The table <code>lcms.betrokken_organisatie</code>.
+     * The table <code>lcms.appendix</code>.
      */
-    public static final BetrokkenOrganisatie BETROKKEN_ORGANISATIE = BetrokkenOrganisatie.BETROKKEN_ORGANISATIE;
-
-    /**
-     * The table <code>lcms.bijlage</code>.
-     */
-    public static final Bijlage BIJLAGE = Bijlage.BIJLAGE;
+    public static final Appendix APPENDIX = Appendix.APPENDIX;
 
     /**
      * The table <code>lcms.discipline</code>.
@@ -58,24 +53,19 @@ public class Tables {
     public static final Discipline DISCIPLINE = Discipline.DISCIPLINE;
 
     /**
-     * The table <code>lcms.domein</code>.
+     * The table <code>lcms.domain</code>.
      */
-    public static final Domein DOMEIN = Domein.DOMEIN;
+    public static final Domain DOMAIN = Domain.DOMAIN;
 
     /**
-     * The table <code>lcms.gebruiker</code>.
+     * The table <code>lcms.field</code>.
      */
-    public static final Gebruiker GEBRUIKER = Gebruiker.GEBRUIKER;
+    public static final Field FIELD = Field.FIELD;
 
     /**
-     * The table <code>lcms.gebruiker_activiteit</code>.
+     * The table <code>lcms.involved_organisation</code>.
      */
-    public static final GebruikerActiviteit GEBRUIKER_ACTIVITEIT = GebruikerActiviteit.GEBRUIKER_ACTIVITEIT;
-
-    /**
-     * The table <code>lcms.gebruiker_profiel</code>.
-     */
-    public static final GebruikerProfiel GEBRUIKER_PROFIEL = GebruikerProfiel.GEBRUIKER_PROFIEL;
+    public static final InvolvedOrganisation INVOLVED_ORGANISATION = InvolvedOrganisation.INVOLVED_ORGANISATION;
 
     /**
      * The table <code>lcms.log</code>.
@@ -83,24 +73,19 @@ public class Tables {
     public static final Log LOG = Log.LOG;
 
     /**
-     * The table <code>lcms.opschaling</code>.
+     * The table <code>lcms.organisation</code>.
      */
-    public static final Opschaling OPSCHALING = Opschaling.OPSCHALING;
+    public static final Organisation ORGANISATION = Organisation.ORGANISATION;
 
     /**
-     * The table <code>lcms.organisatie</code>.
+     * The table <code>lcms.point</code>.
      */
-    public static final Organisatie ORGANISATIE = Organisatie.ORGANISATIE;
+    public static final Point POINT = Point.POINT;
 
     /**
-     * The table <code>lcms.profiel</code>.
+     * The table <code>lcms.profile</code>.
      */
-    public static final Profiel PROFIEL = Profiel.PROFIEL;
-
-    /**
-     * The table <code>lcms.punt</code>.
-     */
-    public static final Punt PUNT = Punt.PUNT;
+    public static final Profile PROFILE = Profile.PROFILE;
 
     /**
      * The table <code>lcms.scenario</code>.
@@ -108,14 +93,19 @@ public class Tables {
     public static final Scenario SCENARIO = Scenario.SCENARIO;
 
     /**
-     * The table <code>lcms.scenario_sessie</code>.
+     * The table <code>lcms.scenario_session</code>.
      */
-    public static final ScenarioSessie SCENARIO_SESSIE = ScenarioSessie.SCENARIO_SESSIE;
+    public static final ScenarioSession SCENARIO_SESSION = ScenarioSession.SCENARIO_SESSION;
 
     /**
-     * The table <code>lcms.sessie</code>.
+     * The table <code>lcms.session</code>.
      */
-    public static final Sessie SESSIE = Sessie.SESSIE;
+    public static final Session SESSION = Session.SESSION;
+
+    /**
+     * Nederlands: opschaling, GRIP1, GRIP2, etc.
+     */
+    public static final Severity SEVERITY = Severity.SEVERITY;
 
     /**
      * The table <code>lcms.team</code>.
@@ -123,12 +113,22 @@ public class Tables {
     public static final Team TEAM = Team.TEAM;
 
     /**
-     * The table <code>lcms.thema</code>.
+     * The table <code>lcms.theme</code>.
      */
-    public static final Thema THEMA = Thema.THEMA;
+    public static final Theme THEME = Theme.THEME;
 
     /**
-     * The table <code>lcms.veld</code>.
+     * The table <code>lcms.user</code>.
      */
-    public static final Veld VELD = Veld.VELD;
+    public static final User USER = User.USER;
+
+    /**
+     * The table <code>lcms.user_activity</code>.
+     */
+    public static final UserActivity USER_ACTIVITY = UserActivity.USER_ACTIVITY;
+
+    /**
+     * The table <code>lcms.user_profile</code>.
+     */
+    public static final UserProfile USER_PROFILE = UserProfile.USER_PROFILE;
 }
